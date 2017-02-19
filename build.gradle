@@ -1,0 +1,27 @@
+project.ext.sdkVersion = 24
+project.ext.buildTools = '24.0.0'
+
+buildscript {
+
+    def currentVersion = file("${rootDir}/version.txt").text.trim()
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:2.2.3'
+        classpath "io.realm:realm-gradle-plugin:${currentVersion}"
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
